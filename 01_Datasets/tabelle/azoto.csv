@@ -1,0 +1,13 @@
+cod_coltura,scheda,resa_min_t_ha,resa_max_t_ha,dose_standard_kg_ha,meno_se_resa_bassa,piu_se_resa_alta,aumento_massimo,meno_dopo_medica_oltre_5_anni,meno_dopo_prato_leguminose,meno_sostanza_organica_alta,piu_sostanza_organica_bassa,piu_residui_interrati,piu_piogge_invernali,nota
+COMMEAT,varietà panificabili FP/FPS,5,7,155,30,30,40,80,40,15,15,30,15,"varietà biscottiere 140 kg/ha, varietà di forza FF 160 kg/ha"
+WHEATD,media produzione,5,7,160,25,30,40,80,40,15,15,30,15,
+BARLEY,,5.2,7.8,125,25,25,40,80,40,15,15,30,15,
+RAPE,,1.7,3.2,135,20,20,40,80,40,15,15,30,15,
+MAIZE,media produzione,6,9,150,30,30,50,80,40,15,15,30,15,
+MAIZE,alta produzione,10,14,240,30,30,70,80,40,15,15,30,15,
+SOYA,,2.8,4.2,0,0,0,0,0,0,0,0,0,0,"leguminosa: 0 kg/ha se le radici hanno i tubercoli del rizobio, 120 kg/ha se mancano"
+SUNFLO,,2.4,3.6,90,25,25,40,80,40,15,15,30,15,
+SORGH,da granella,6,9,160,25,25,30,80,40,15,15,30,15,
+RICE,,5.6,8.4,110,25,25,40,0,0,15,15,0,15,"meno 30 kg/ha se la sostanza organica è molto elevata (oltre 4%)"
+BEETS,,40,60,120,30,30,40,80,40,20,20,30,15,"al massimo il 40% alla semina, il resto in copertura entro l'8a foglia"
+LUCERNE,,,,0,0,0,0,0,0,0,0,0,0,leguminosa: nessuna concimazione azotata

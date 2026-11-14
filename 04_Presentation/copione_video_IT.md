@@ -1,0 +1,16 @@
+# FarmerBud: copione del video demo di 2 minuti
+
+*[English version](video_script_EN.md)* · Struttura della guida dell'hackathon: problema 15 s, demo 60 s, come funziona 30 s, prossimi passi 15 s. Basta una registrazione dello schermo con la voce (OBS, Loom o il registratore del computer). Il video va **in inglese** per i giudici: qui sotto c'è la traduzione italiana per prepararsi. Caricalo su YouTube come **non in elenco** e prova il link da un browser in cui non hai fatto l'accesso.
+
+**Prima di registrare:** apri `02_AI_Model/2_FarmerBud_app_EN.ipynb` su Colab, esegui tutte le celle una volta (così le reti sono già caricate) e scorri fino alla mappa. Tieni aperto in un'altra scheda `03_Evaluation/figures/results_vs_baseline.png`.
+
+| Tempo | Sullo schermo | Cosa dire |
+|---|---|---|
+| **0:00-0:15** · Il problema | Titolo "🌱 FarmerBud" in cima all'app | "Ogni stagione un piccolo agricoltore della Pianura Padana deve decidere cosa seminare. Nella siccità del 2022 il mais ha perso quasi il 20% della resa, il frumento no. FarmerBud aiuta quell'agricoltore a scegliere colture adatte al suo campo e al clima di oggi." |
+| **0:15-0:30** · Demo, input | Zoom sulla mappa, clic su un campo vicino a Cremona. Compaiono il segnaposto e le coordinate | "L'agricoltore clicca sul suo campo. Se vuole, dice cosa ha coltivato l'anno scorso, qui mais, e se può irrigare." |
+| **0:30-0:45** · Demo, attesa | Premi **Compute**. Compaiono i messaggi: quota, suolo, 20 anni di clima, le 4 reti | "FarmerBud scarica 20 anni di clima giornaliero e il suolo proprio di quel punto, e fa lavorare le nostre 4 reti neurali su ogni anno." |
+| **0:45-1:15** · Demo, risultato | La tabella colorata, poi l'elenco dei consigli | "Ecco le 5 colture migliori. Il verde è meglio. Il frumento tenero rende il 4% sopra la media padana e non chiede quasi acqua. Anche la soia rende bene e non vuole concime azotato, ma in un'estate secca come il 2022 servirebbero circa 290 mm di irrigazione. E siccome nel campo c'era mais, ricorda di interrare i residui prima del frumento duro, contro la fusariosi." |
+| **1:15-1:45** · Come funziona | Passa a `results_vs_baseline.png` | "Abbiamo unito tre fonti pubbliche: rese ISTAT di 33 province e 10 colture in 20 anni, clima NASA POWER e suolo SoilGrids. Abbiamo testato sul 2022-2025, anni che le reti non avevano mai visto, e su province lasciate fuori una alla volta. Prevedere la resa esatta di un posto nuovo è difficile: lì la nostra rete è alla pari con una semplice media. Ma nel mettere in classifica le colture, che è la decisione vera dell'agricoltore, indovina il 49% delle prime 3, contro il 41% della regola semplice e il 35% del caso." |
+| **1:45-2:00** · Prossimi passi | Di nuovo la tabella dell'app | "Il nostro limite più grande: abbiamo solo medie provinciali, non singoli campi. Il prossimo passo sono dati del singolo campo e scenari di clima futuro, per mostrare come cambieranno le colture migliori. FarmerBud è un prototipo, non un consiglio agronomico." |
+
+**Consigli:** i numeri del copione sono quelli del campo di esempio (45,15 N, 9,95 E, coltura precedente mais, irrigato): se clicchi altrove, leggi i tuoi. Parla piano, un solo messaggio principale (il risultato sulla classifica). Se il calcolo dal vivo è lento, taglia l'attesa nel montaggio o usa l'esempio della sezione 7 del notebook.

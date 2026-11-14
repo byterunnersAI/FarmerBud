@@ -1,0 +1,12 @@
+cod_coltura,coltura,semina_mm_gg,durata_giorni,giorni_ini_fao,giorni_svil_fao,giorni_media_fao,giorni_finale_fao,kc_ini,kc_mid,kc_end,ph_ottimo_min,ph_ottimo_max,ph_min,ph_max,tessiture_adatte,drenaggio,gruppo_ristoppio,ristoppio,anni_pausa,motivo_rotazione,note_acqua
+COMMEAT,frumento tenero,10-25,240,30,140,40,30,0.70,1.15,0.30,6.0,7.0,5.5,8.5,media,buono,cereali_vernini,una volta in 5 anni,0,"fusariosi e mal del piede: meglio evitare il ristoppio; orzo e frumento duro contano come ristoppio",
+WHEATD,frumento duro,10-25,240,30,140,40,30,0.70,1.15,0.30,6.0,7.0,5.5,8.5,pesante|media,buono,cereali_vernini,no,1,"non può seguire un cereale autunno-vernino (fusariosi); dopo mais o sorgo interrare i residui con aratura",
+BARLEY,orzo,10-15,235,30,140,40,30,0.70,1.15,0.25,6.5,7.5,6.0,8.0,media,buono,cereali_vernini,una volta in 5 anni,0,"frumento tenero e duro contano come ristoppio",
+RAPE,colza,09-15,270,30,140,40,30,0.35,1.075,0.35,6.5,7.6,5.5,8.0,media|leggera,buono,,no,1,"nematode della barbabietola e Sclerotinia: vedi rotazioni.csv",
+MAIZE,mais,04-10,160,30,40,50,30,0.30,1.20,0.35,5.0,7.0,4.5,8.5,media,buono,,una volta in 5 anni,0,"diabrotica: la rotazione basta a contenerla",
+SOYA,soia,05-10,140,20,35,60,25,0.40,1.15,0.50,5.5,6.5,4.5,8.4,media,buono,,no,1,"Sclerotinia: non prima o dopo colza e girasole",
+SUNFLO,girasole,04-15,130,25,35,45,25,0.35,1.075,0.35,6.0,7.5,5.5,8.0,media|leggera,buono,,no,1,"Sclerotinia: non prima o dopo colza e soia",
+SORGH,sorgo,05-15,130,20,35,40,30,0.30,1.05,0.55,5.5,7.5,5.0,8.0,pesante|media,buono,,una volta in 5 anni,0,,
+RICE,riso,04-20,150,30,30,60,30,1.05,1.20,0.75,5.5,7.0,4.5,9.0,pesante|media|leggera,scarso,,fino a 5 anni di fila,1,"risaia al massimo 5 anni, poi almeno 1 anno senza riso (7 anni e 2 di pausa su suoli argillosi o ricchi di sostanza organica)","il valore è solo l'evapotraspirazione: la risaia sommersa richiede molta più acqua (sommersione e percolazione) e una concessione irrigua"
+BEETS,barbabietola da zucchero,03-15,170,25,35,50,50,0.35,1.20,0.70,6.0,6.8,5.5,8.5,pesante|media,buono,,no,3,"nematode Heterodera schachtii: torna sullo stesso campo solo dopo 3 anni",
+LUCERNE,erba medica,,,,,,,,,,6.5,7.5,4.3,8.7,media|leggera,buono,,no,1,"reimpianto solo dopo almeno un anno di un'altra coltura non leguminosa",coltura pluriennale: non calcolata

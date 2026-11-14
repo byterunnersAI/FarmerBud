@@ -1,0 +1,34 @@
+cod_provincia,provincia,regione,comune_punto,lat,lon,quota_m,provincia_trovata
+ITC11,Torino,Piemonte,Carmagnola,44.84963,7.72032,240.0,Provincia di Torino
+ITC12,Vercelli,Piemonte,Vercelli,45.32163,8.41989,130.0,Provincia di Vercelli
+ITC13,Biella,Piemonte,Salussola,45.44666,8.111,289.0,Provincia di Biella
+ITC15,Novara,Piemonte,Novara,45.44694,8.62118,165.0,Novara
+ITC16,Cuneo,Piemonte,Savigliano,44.64808,7.65677,320.0,Provincia di Cuneo
+ITC17,Asti,Piemonte,Asti,44.90162,8.20751,123.0,Provincia di Asti
+ITC18,Alessandria,Piemonte,Alessandria,44.90924,8.61007,95.0,Provincia di Alessandria
+ITC41,Varese,Lombardia,Gallarate,45.66019,8.79164,238.0,Provincia di Varese
+ITC42,Como,Lombardia,Mariano Comense,45.69651,9.1818,252.0,Provincia di Como
+ITC43,Lecco,Lombardia,Merate,45.68858,9.4208,292.0,Lecco
+ITC45,Milano,Lombardia,Abbiategrasso,45.39821,8.91678,120.0,Provincia di Milano
+ITC46,Bergamo,Lombardia,Treviglio,45.52081,9.59102,125.0,Provincia di Bergamo
+ITC47,Brescia,Lombardia,Ghedi,45.40204,10.27681,85.0,Provincia di Brescia
+ITC48,Pavia,Lombardia,Mortara,45.2494,8.73302,108.0,Pavia
+ITC49,Lodi,Lombardia,Lodi,45.30989,9.50085,87.0,Provincia di Lodi
+ITC4A,Cremona,Lombardia,Cremona,45.13325,10.02129,45.0,Provincia di Cremona
+ITC4B,Mantova,Lombardia,Mantova,45.16031,10.79784,19.0,Provincia di Mantova
+IT108,Monza e della Brianza,Lombardia,Vimercate,45.61545,9.36801,194.0,Provincia di Monza e Brianza
+ITD31,Verona,Veneto,Isola della Scala,45.26943,11.00824,31.0,Provincia di Verona
+ITD32,Vicenza,Veneto,Camisano Vicentino,45.52156,11.70817,24.0,Provincia di Vicenza
+ITD34,Treviso,Veneto,Castelfranco Veneto,45.67146,11.92755,43.0,Provincia di Treviso
+ITD35,Venezia,Veneto,San Donà di Piave,45.63019,12.5681,3.0,Provincia di Venezia
+ITD36,Padova,Veneto,Piove di Sacco,45.29665,12.03683,5.0,Provincia di Padova
+ITD37,Rovigo,Veneto,Rovigo,45.06982,11.79022,7.0,Provincia di Rovigo
+ITD51,Piacenza,Emilia-Romagna,Piacenza,45.05242,9.69342,61.0,Provincia di Piacenza
+ITD52,Parma,Emilia-Romagna,Fontanellato,44.88187,10.17631,44.0,Provincia di Parma
+ITD53,Reggio nell'Emilia,Emilia-Romagna,Correggio,44.76737,10.78345,31.0,Provincia di Reggio Emilia
+ITD54,Modena,Emilia-Romagna,Carpi,44.78237,10.8777,28.0,Provincia di Modena
+ITD55,Bologna,Emilia-Romagna,Budrio,44.53745,11.53439,25.0,Città Metropolitana di Bologna
+ITD56,Ferrara,Emilia-Romagna,Ferrara,44.83804,11.62057,9.0,Ferrara
+ITD57,Ravenna,Emilia-Romagna,Lugo,44.42137,11.91094,12.0,Provincia di Ravenna
+ITD58,Forlì-Cesena,Emilia-Romagna,Forlì,44.22177,12.04144,34.0,Forlì-Cesena
+ITD59,Rimini,Emilia-Romagna,Santarcangelo di Romagna,44.06326,12.44657,42.0,Provincia di Rimini
