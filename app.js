@@ -59,60 +59,9 @@ const WARNINGS = {
 const TILE_COLORS = ["#a9d07c", "#ecdf7f", "#c3b0ea"];
 const PLACES = ["1st", "2nd", "3rd"];
 
-function svg(parts) {
-  return `<svg viewBox="0 0 64 64" aria-hidden="true" focusable="false">${parts}</svg>`;
+function cropIcon(code) {
+  return `<img src="icons/${code.toLowerCase()}.jpg" alt="" width="256" height="256">`;
 }
-
-function ear(fill, awn) {
-  let parts = `<path d="M32 60V30" stroke="#6f8f2c" stroke-width="2.6" stroke-linecap="round" fill="none"/>`;
-  parts += `<path d="M32 57C25 52 17 53 12 59C20 60 27 60 32 57Z" fill="#8db24a" stroke="${OUTLINE}" stroke-width="1.5"/>`;
-  const grains = [[32, 24, 0], [26.5, 32, -28], [37.5, 32, 28], [26.5, 40, -28], [37.5, 40, 28], [26.5, 48, -28], [37.5, 48, 28]];
-  for (const [x, y, angle] of grains) {
-    const dx = Math.sin((angle * Math.PI) / 180);
-    const dy = -Math.cos((angle * Math.PI) / 180);
-    const tipX = x + dx * 6.5;
-    const tipY = y + dy * 6.5;
-    if (awn > 0) {
-      parts += `<line x1="${tipX.toFixed(1)}" y1="${tipY.toFixed(1)}" x2="${(tipX + dx * awn).toFixed(1)}" y2="${(tipY + dy * awn).toFixed(1)}" stroke="${OUTLINE}" stroke-width="1.3" stroke-linecap="round"/>`;
-    }
-    parts += `<ellipse cx="${x}" cy="${y}" rx="3.8" ry="6.5" transform="rotate(${angle} ${x} ${y})" fill="${fill}" stroke="${OUTLINE}" stroke-width="1.6"/>`;
-  }
-  return svg(parts);
-}
-
-function sunflower() {
-  let parts = `<path d="M32 37V62" stroke="#6f8f2c" stroke-width="3" stroke-linecap="round"/>`;
-  parts += `<path d="M32 52C24 46 15 47 10 53C18 56 26 56 32 54Z" fill="#8db24a" stroke="${OUTLINE}" stroke-width="1.5"/>`;
-  for (let k = 0; k < 12; k++) {
-    parts += `<ellipse cx="32" cy="14" rx="4.6" ry="8.5" transform="rotate(${k * 30} 32 27)" fill="#f5c518" stroke="${OUTLINE}" stroke-width="1.3"/>`;
-  }
-  parts += `<circle cx="32" cy="27" r="10" fill="#6b3e1d" stroke="${OUTLINE}" stroke-width="1.6"/>`;
-  parts += `<g fill="#3f2410"><circle cx="29" cy="24" r="1.3"/><circle cx="35" cy="24" r="1.3"/><circle cx="32" cy="29" r="1.3"/><circle cx="28" cy="30" r="1.3"/><circle cx="36" cy="30" r="1.3"/><circle cx="32" cy="22" r="1.3"/></g>`;
-  return svg(parts);
-}
-
-function rapeseed() {
-  let parts = `<path d="M32 62V30M32 46L21 30M32 41L43 26" stroke="#6f8f2c" stroke-width="2.4" stroke-linecap="round" fill="none"/>`;
-  parts += `<path d="M32 54L23 49M32 57L41 52" stroke="#6f8f2c" stroke-width="1.8" stroke-linecap="round"/>`;
-  const flowers = [[32, 24], [21, 27], [43, 23], [26, 15], [38, 14], [32, 6]];
-  for (const [x, y] of flowers) {
-    parts += `<g transform="translate(${x} ${y})" fill="#f7d732" stroke="${OUTLINE}" stroke-width="1"><circle cy="-3.2" r="3.3"/><circle cx="3.2" r="3.3"/><circle cy="3.2" r="3.3"/><circle cx="-3.2" r="3.3"/><circle r="1.6" fill="#e3971a"/></g>`;
-  }
-  return svg(parts);
-}
-
-const ICONS = {
-  COMMEAT: ear("#e8b84a", 0),
-  WHEATD: ear("#d4892c", 10),
-  BARLEY: ear("#f1d36b", 15),
-  MAIZE: svg(`<path d="M32 6C42 6 46 18 46 32S40 56 32 58C24 56 18 46 18 32S22 6 32 6Z" fill="#f2c230" stroke="${OUTLINE}" stroke-width="1.8"/><path d="M21 18H43M19.5 26H44.5M19 34H45M20 42H44M23 50H41M26 10V54M32 7V57M38 10V54" stroke="#c9961c" stroke-width="1.2" fill="none"/><path d="M32 58C22 55 12 45 10 28C18 36 24 42 31 46Z" fill="#7fae3e" stroke="${OUTLINE}" stroke-width="1.8" stroke-linejoin="round"/><path d="M32 58C42 55 52 45 54 28C46 36 40 42 33 46Z" fill="#6c9a32" stroke="${OUTLINE}" stroke-width="1.8" stroke-linejoin="round"/>`),
-  SOYA: svg(`<path d="M52 14C56 9 59 7 62 5" stroke="#6f8f2c" stroke-width="2.4" stroke-linecap="round" fill="none"/><path d="M9 46C12 31 28 18 45 13C54 10 58 15 56 22C52 37 36 49 20 53C12 55 7 52 9 46Z" fill="#a5c95a" stroke="${OUTLINE}" stroke-width="1.8"/><g fill="#c8df86" stroke="${OUTLINE}" stroke-width="1.4"><circle cx="21" cy="43" r="6"/><circle cx="32" cy="34" r="6.5"/><circle cx="43" cy="25" r="6"/></g><path d="M44 46C52 42 60 46 61 55C53 56 46 53 44 46Z" fill="#7fae3e" stroke="${OUTLINE}" stroke-width="1.5"/>`),
-  SUNFLO: sunflower(),
-  SORGH: svg(`<path d="M32 62V28" stroke="#6f8f2c" stroke-width="3" stroke-linecap="round"/><path d="M32 50C23 45 15 46 9 52C18 54 26 54 32 53Z" fill="#8db24a" stroke="${OUTLINE}" stroke-width="1.5"/><path d="M32 41C41 36 49 37 55 43C46 45 38 45 32 44Z" fill="#6c9a32" stroke="${OUTLINE}" stroke-width="1.5"/><g stroke="${OUTLINE}" stroke-width="1.3"><circle cx="32" cy="7" r="4.2" fill="#b5532a"/><circle cx="27" cy="12" r="4.2" fill="#9c4321"/><circle cx="37" cy="12" r="4.2" fill="#c0612f"/><circle cx="24" cy="19" r="4.2" fill="#b5532a"/><circle cx="32" cy="16" r="4.2" fill="#9c4321"/><circle cx="40" cy="19" r="4.2" fill="#9c4321"/><circle cx="28" cy="24" r="4.2" fill="#c0612f"/><circle cx="36" cy="24" r="4.2" fill="#b5532a"/><circle cx="32" cy="29" r="3.6" fill="#9c4321"/></g>`),
-  RICE: svg(`<path d="M16 62C18 42 24 24 36 14C44 8 53 11 56 20C58 26 57 32 54 38" stroke="#6f8f2c" stroke-width="2.4" fill="none" stroke-linecap="round"/><path d="M38 13C41 19 41 26 39 33" stroke="#6f8f2c" stroke-width="1.8" fill="none" stroke-linecap="round"/><path d="M20 50C12 46 7 38 7 29C13 35 17 40 22 44Z" fill="#8db24a" stroke="${OUTLINE}" stroke-width="1.5"/><g fill="#efdca0" stroke="${OUTLINE}" stroke-width="1.3"><ellipse cx="45" cy="13" rx="2.4" ry="4.2" transform="rotate(15 45 13)"/><ellipse cx="51" cy="14" rx="2.4" ry="4.2" transform="rotate(15 51 14)"/><ellipse cx="56" cy="19" rx="2.4" ry="4.2" transform="rotate(15 56 19)"/><ellipse cx="58.5" cy="26" rx="2.4" ry="4.2" transform="rotate(15 58.5 26)"/><ellipse cx="57.5" cy="33" rx="2.4" ry="4.2" transform="rotate(15 57.5 33)"/><ellipse cx="54" cy="40" rx="2.4" ry="4.2" transform="rotate(15 54 40)"/><ellipse cx="42" cy="21" rx="2.2" ry="4" transform="rotate(5 42 21)"/><ellipse cx="42" cy="28" rx="2.2" ry="4" transform="rotate(5 42 28)"/><ellipse cx="40" cy="35" rx="2.2" ry="4" transform="rotate(5 40 35)"/></g>`),
-  RAPE: rapeseed(),
-  BEETS: svg(`<path d="M32 27C25 20 17 11 20 4C28 6 32 16 32 27Z" fill="#7fae3e" stroke="${OUTLINE}" stroke-width="1.5"/><path d="M32 27C39 20 47 11 44 4C36 6 32 16 32 27Z" fill="#6c9a32" stroke="${OUTLINE}" stroke-width="1.5"/><path d="M32 27C29 17 30 8 32 2C34 8 35 17 32 27Z" fill="#8fbf4a" stroke="${OUTLINE}" stroke-width="1.5"/><path d="M18 31C18 25 46 25 46 31C46 43 38 54 32 62C26 54 18 43 18 31Z" fill="#f4ead2" stroke="${OUTLINE}" stroke-width="1.8"/><path d="M23 37C28 38.5 36 38.5 41 37M25 45C29 46.5 35 46.5 39 45M28 52C30 53 34 53 36 52" stroke="#bfae84" stroke-width="1.3" fill="none" stroke-linecap="round"/>`),
-};
 
 const SMALL_ICONS = {
   water: `<svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M12 2C9 7 5 10.5 5 15a7 7 0 0 0 14 0c0-4.5-4-8-7-13Z" fill="#6fb3dc" stroke="${OUTLINE}" stroke-width="1.5"/></svg>`,
@@ -268,7 +217,11 @@ async function runAnalysis() {
   try {
     lastResult = await analyseField(point.lat, point.lon, choices, (message) => showStatus(message, "busy"));
     showResults(lastResult);
-    showStatus("Done! Here are the best crops for your field.", "ok");
+    if (lastResult.ranking.length === 0) {
+      showStatus("No crop fits your field: read why in the results below.", "error");
+    } else {
+      showStatus("Done! Here are the best crops for your field.", "ok");
+    }
     $("results").scrollIntoView({ behavior: "smooth", block: "start" });
   } catch (error) {
     showStatus(error instanceof UserError ? error.message : "Something went wrong while downloading the data. Check your connection and try again.", "error");
@@ -618,7 +571,7 @@ function showResults(result) {
     <article class="crop-card">
       <div class="crop-tile" style="--tile:${TILE_COLORS[i]}">
         <span class="rank">${PLACES[i]}</span>
-        ${ICONS[crop.code]}
+        ${cropIcon(crop.code)}
       </div>
       <h3 class="crop-name">${crop.name}</h3>
       <button class="btn-why" type="button" data-index="${i}" aria-label="Why ${crop.name}?">Why?</button>
@@ -638,8 +591,35 @@ function showResults(result) {
     ["Mean humidity", `${Math.round(area.humidity)}%`],
     ["Mean wind", `${area.wind.toFixed(1)} m/s`],
   ].map(([label, value]) => `<li><span>${label}</span><strong>${value}</strong></li>`).join("");
-  $("results-empty").hidden = true;
+  const message = fewCropsMessage(result);
+  $("results-message").innerHTML = message;
+  $("results-message").hidden = message === "";
   $("facts").hidden = false;
+}
+
+function fewCropsMessage(result) {
+  const count = result.ranking.length;
+  if (count >= 3) return "";
+  const ph = result.soil.ph;
+  const byPh = result.crops.filter((c) => ph < CROPS[c.code].ph[2] || ph > CROPS[c.code].ph[3]).length;
+  const byRotation = result.crops.filter((c) => c.excluded).length - byPh;
+  if (count === 0 && byRotation === 0) {
+    const lowest = Math.min(...Object.values(CROPS).map((c) => c.ph[2]));
+    const highest = Math.max(...Object.values(CROPS).map((c) => c.ph[3]));
+    const problem = ph < lowest
+      ? `A soil pH of ${ph.toFixed(1)} is too acidic for all 10 crops FarmerBud knows: the lowest pH they can take is ${lowest.toFixed(1)}.`
+      : `A soil pH of ${ph.toFixed(1)} is too alkaline for all 10 crops FarmerBud knows: the highest pH they can take is ${highest.toFixed(1)}.`;
+    const advice = result.choices.ph !== null
+      ? "Check the pH you wrote, or switch it off to use the soil pH from SoilGrids."
+      : "Ask an agronomist how to correct your soil before sowing.";
+    return `<strong class="alert">No crop fits your field.</strong> ${problem} ${advice}`;
+  }
+  const excluded = result.crops.length - count;
+  const reason = byRotation === 0 ? ` by your soil pH (${ph.toFixed(1)})`
+    : byPh === 0 ? " by last year's crop"
+    : `, ${byPh} by your soil pH (${ph.toFixed(1)}) and ${byRotation} by last year's crop`;
+  if (count === 0) return `<strong class="alert">No crop fits your field.</strong> All ${excluded} crops are ruled out${reason}.`;
+  return `<strong>Only ${count === 1 ? "1 crop fits" : "2 crops fit"} your field.</strong> The other ${excluded} are ruled out${reason}. Press <strong>Why?</strong> for the details.`;
 }
 
 function openWhy(index) {
@@ -663,13 +643,12 @@ function statCard(icon, label, value, detail, meaning) {
 
 function whyHtml(crop, index, result) {
   const top = result.ranking.slice(0, 3);
-  const above = index > 0 ? result.ranking[index - 1] : null;
   const avgWater = result.averageWater;
   const previousName = result.choices.previous === "NONE" ? null : CROPS[result.choices.previous].name;
   const steadiness = crop.cv <= 10 ? "Very steady" : crop.cv <= 15 ? "Steady" : crop.cv <= 20 ? "Changes quite a lot" : "Changes a lot";
 
   let html = `<div class="stat-grid">`;
-  html += statCard(ICONS[crop.code], "Yield", `${crop.tHa.toFixed(1)} t/ha`,
+  html += statCard(cropIcon(crop.code), "Yield", `${crop.tHa.toFixed(1)} t/ha`,
     `${signedPercent(crop.relative)} compared with the Po Valley average`,
     "How much you harvest per hectare in a normal year.");
   html += statCard(SMALL_ICONS.water, "Irrigation water", `${whole(crop.waterNormal)} mm`,
@@ -683,6 +662,8 @@ function whyHtml(crop, index, result) {
     "Why it matters: a low number means a steadier income, year after year. A high number means some years can go much worse: riskier if you have loans or little savings.");
   html += `</div>`;
 
+  /*
+  const above = index > 0 ? result.ranking[index - 1] : null;
   html += `<section class="why-section"><h3>Why is it ${PLACES[index]}?</h3>`;
   const waterSign = crop.waterPoints >= 0 ? "+" : "−";
   html += `<p class="score-line"><span>${Math.round(crop.yieldPoints)} yield points</span> <span>${waterSign} ${Math.abs(crop.waterPoints).toFixed(1)} water points</span> <span>= <strong>${crop.score.toFixed(1)} points</strong></span></p>`;
@@ -703,6 +684,7 @@ function whyHtml(crop, index, result) {
     html += `<p>It yields more than ${lower(above.name)} (${signedPercent(crop.relative)} against ${signedPercent(above.relative)}), but it needs ${whole(crop.waterNormal - above.waterNormal)} mm more water, and that costs it points.</p>`;
   }
   html += `</section>`;
+  */
 
   html += `<section class="why-section"><h3>How it helps you save</h3><ul>`;
   if (crop.waterNormal <= avgWater) {
