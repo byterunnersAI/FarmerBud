@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="FarmerBud is an AI agent that recommends the best crops for a small farm in the Po Valley.">
+  <meta name="theme-color" content="#fce9bf">
+  <title>FarmerBud</title>
+  <link rel="icon" href="logo.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Gochi+Hand&family=Nunito:wght@400;600;700;800&display=swap">
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page">
+    <header class="hero">
+      <span class="leaf leaf-autumn hero-leaf-1" aria-hidden="true"></span>
+      <span class="leaf leaf-green hero-leaf-2" aria-hidden="true"></span>
+      <span class="leaf leaf-autumn hero-leaf-3" aria-hidden="true"></span>
+      <span class="leaf leaf-green hero-leaf-4" aria-hidden="true"></span>
+      <span class="leaf leaf-autumn hero-leaf-5" aria-hidden="true"></span>
+      <div class="hero-logo">
+        <img src="logo.png" alt="FarmerBud logo: a smiling scarecrow" width="760" height="564">
+      </div>
+      <p class="hero-intro">Are you a small farmer in the Po Valley and don't know where to start? <strong>FarmerBud has got your back!</strong></p>
+      <div class="bars">
+        <hr class="bar">
+        <hr class="bar">
+      </div>
+      <p class="hero-text">This AI Agent will guide you through the crop options, recommending the best one for your soil.</p>
+      <a class="scroll-cue" href="#location">
+        <span>Let's start</span>
+        <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false"><path d="M5 9l7 7 7-7" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/></svg>
+      </a>
+    </header>
+
+    <main>
+      <section id="location" class="panel">
+        <span class="leaf leaf-green side-leaf-1" aria-hidden="true"></span>
+        <span class="leaf leaf-autumn side-leaf-2" aria-hidden="true"></span>
+        <div class="split">
+          <div class="split-left">
+            <h2>What is your location?</h2>
+            <div class="map-box">
+              <div id="map" aria-label="Map of the Po Valley: click on your field"></div>
+              <p id="map-coords" class="map-coords" aria-live="polite">Click on your field</p>
+            </div>
+          </div>
+          <div class="split-right">
+            <h3>Coordinates</h3>
+            <div class="coords-row">
+              <label class="field">
+                <span>Lat</span>
+                <input id="lat" type="text" inputmode="decimal" autocomplete="off" placeholder="45.1500">
+              </label>
+              <label class="field">
+                <span>Lon</span>
+                <input id="lon" type="text" inputmode="decimal" autocomplete="off" placeholder="9.9500">
+              </label>
+              <label class="field">
+                <span>Elevation</span>
+                <input id="elevation" type="text" readonly tabindex="-1" placeholder="— m">
+              </label>
+            </div>
+            <h3>Additional info:</h3>
+            <ul class="extra">
+              <li>
+                <label class="field">
+                  <span>Last year crop</span>
+                  <select id="previous-crop">
+                    <option value="NONE">Don't know</option>
+                    <option value="BARLEY">Barley</option>
+                    <option value="WHEATD">Durum wheat</option>
+                    <option value="MAIZE">Maize</option>
+                    <option value="RAPE">Rapeseed</option>
+                    <option value="RICE">Rice</option>
+                    <option value="COMMEAT">Soft wheat</option>
+                    <option value="SORGH">Sorghum</option>
+                    <option value="SOYA">Soybean</option>
+                    <option value="BEETS">Sugar beet</option>
+                    <option value="SUNFLO">Sunflower</option>
+                  </select>
+                </label>
+              </li>
+              <li>
+                <label class="field">
+                  <span>Soil organic matter</span>
+                  <select id="organic-matter">
+                    <option value="dk">Don't know</option>
+                    <option value="low">Low</option>
+                    <option value="normal">Normal</option>
+                    <option value="high">High</option>
+                  </select>
+                </label>
+              </li>
+              <li>
+                <span class="field-title" id="ph-title">pH</span>
+                <div class="ph-row">
+                  <label class="switch">
+                    <input id="ph-toggle" type="checkbox" role="switch" aria-describedby="ph-title">
+                    <span class="slider" aria-hidden="true"></span>
+                    <span class="switch-text">I know my soil pH</span>
+                  </label>
+                  <input id="ph" type="text" inputmode="decimal" autocomplete="off" placeholder="e.g. 6.8" disabled aria-labelledby="ph-title">
+                </div>
+              </li>
+            </ul>
+            <button id="find" class="btn-primary" type="button">Find my best crops</button>
+            <p id="status" class="status" role="status" aria-live="polite"></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="results" class="panel results">
+        <span class="leaf leaf-autumn side-leaf-3" aria-hidden="true"></span>
+        <span class="leaf leaf-green side-leaf-4" aria-hidden="true"></span>
+        <h2 class="title-green">The best crops for your field!</h2>
+        <p id="results-empty" class="results-empty">Choose your field and press <strong>Find my best crops</strong>: your 3 best crops will appear here.</p>
+        <div id="podium" class="podium"></div>
+        <div id="facts" class="split facts" hidden>
+          <div>
+            <h3 class="title-green">Your type of soil:</h3>
+            <ul id="soil-list" class="facts-list"></ul>
+            <p id="soil-source" class="note"></p>
+          </div>
+          <div>
+            <h3 class="title-green">Your geographical area:</h3>
+            <ul id="area-list" class="facts-list"></ul>
+            <p class="note">Average 2006-2025 · source: NASA POWER</p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <p class="disclaimer"><strong>FarmerBud is an AI agent.</strong> Its advice comes from 4 neural networks trained on public data and it can be wrong. It is a prototype, not professional advice: talk to an agronomist before you sow.</p>
+      <p class="credits">Data: ISTAT · NASA POWER · ISRIC SoilGrids · Open-Meteo · Map: Leaflet, OpenStreetMap, Esri</p>
+      <p class="copyright">© 2026 ByteRunners · FarmerBud</p>
+    </footer>
+  </div>
+
+  <dialog id="why" class="why" aria-labelledby="why-title">
+    <div class="why-head">
+      <h2 id="why-title"></h2>
+      <button id="why-close" class="why-close" type="button" aria-label="Close">×</button>
+    </div>
+    <div id="why-body" class="why-body"></div>
+  </dialog>
+
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <script src="app.js"></script>
+</body>
+</html>
